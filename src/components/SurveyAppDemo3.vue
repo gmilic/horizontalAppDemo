@@ -1,5 +1,37 @@
 <template>
 <div>
+  <v-app>
+  <div class="hero">
+    <video playsinline autoplay muted loop poster='/assets/City-Traffic-1.jpg'>
+      <source :src='require("@/assets/city-traffic-2.mp4")' type='video/mp4'>
+    </video>
+  </div>
+    <v-container class="grey lighten-5 mt-16">
+      <v-row>
+        <v-col
+          cols="12"
+          sm="4"
+          >
+          <h3>Lump sum shipments</h3> 
+          <p>We've teamed up with RMCs and Corporations to give transferees a business class journey.</p>
+        </v-col>
+              <v-col
+          cols="12"
+          sm="4"
+          >
+          <h3>Lump sum shipments</h3> 
+          <p>We've teamed up with RMCs and Corporations to give transferees a business class journey.</p>
+        </v-col>
+              <v-col
+          cols="12"
+          sm="4"
+          >
+          <h3>Lump sum shipments</h3> 
+          <p>We've teamed up with RMCs and Corporations to give transferees a business class journey.</p>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-app>
   <div class="animWrapper">
     <div class="phoneContainer" >
       <img class="phone" src="../assets/telefon02.png" alt="phone" />
@@ -40,9 +72,9 @@ export default {
     let t1 = gsap.timeline({
       scrollTrigger: {
         trigger: ".animWrapper",
-        scrub: 1,
+        scrub: 2,
         pin: ".animWrapper",
-        markers: true,
+        // markers: true,
         start: "top top",
       }
     })
@@ -50,7 +82,7 @@ export default {
     t1.to('.phoneContainer', {
       x: "53vw", 
       y: "5vw",
-      duration: 2,
+      duration: 6,
       onStart: () => { this.objectType = "" },
       onComplete: () => { this.objectType = "chair" },
       onReverseComplete: () => { this.objectType = "Please scroll" },
@@ -59,7 +91,7 @@ export default {
       .to('.phoneContainer', {
       x: "28vw", 
       y: "-5vw",
-      duration: 2,
+      duration: 4,
       onStart: () => { this.objectType = "" },
       onComplete: () => { this.objectType = "plant" },
       onReverseComplete: () => { this.objectType = "chair" },
@@ -68,7 +100,7 @@ export default {
       .to('.phoneContainer', {
       x: "0vw", 
       y: "-14vw",
-      duration: 2,
+      duration: 4,
       onStart: () => { this.objectType = "" },
       onComplete: () => { this.objectType = "TV" },
       onReverseComplete: () => { this.objectType = "plant" },
@@ -119,5 +151,13 @@ export default {
   }
   .space, .space1 {
     height: 2000px;
+  }
+  .hero {
+    width: 100vw;
+    max-width: 100%;
+    height: 56vw;
+  }
+  .hero video {
+    width: 100%;
   }
 </style>
