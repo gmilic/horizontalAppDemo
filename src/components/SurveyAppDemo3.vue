@@ -5,6 +5,17 @@
     <video playsinline autoplay muted loop poster='/assets/City-Traffic-1.jpg'>
       <source :src='require("@/assets/city-traffic-2.mp4")' type='video/mp4'>
     </video>
+    <div class="heroText">
+      <h2 class="text-h2 font-weight-bold">Full Trucks</h2>
+      <h5 class="text-h5 font-weight-bold">ShyftX delivers smarter tools and expert support to run your moving company with confidence.</h5>
+      <v-btn
+        depressed
+        color="primary"
+        class="my-12"
+      >
+        Primary
+      </v-btn>
+    </div>
   </div>
     <v-container class="grey lighten-5 mt-16">
       <v-row>
@@ -153,11 +164,18 @@ export default {
     height: 2000px;
   }
   .hero {
+    position: relative;
     width: 100vw;
     max-width: 100%;
     height: 56vw;
   }
   .hero video {
     width: 100%;
+  }
+  .heroText {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    color: #fff;
   }
 </style>
