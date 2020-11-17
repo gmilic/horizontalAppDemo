@@ -50,10 +50,13 @@
       <div v-if="showObjectName" class="showChairWrapp">{{ objectType }}</div>
     </div>
   </div>
+  <div class="phoneAnimWrapper">
+    <img class="phoneAnimImg" src="../assets/mobile-mockup-01.png" alt="">
+  </div>
   <div class="space">
 
   </div>
-  <div class="space1"></div>
+
 </div>
 </template>
 
@@ -116,7 +119,16 @@ export default {
       onComplete: () => { this.objectType = "TV" },
       onReverseComplete: () => { this.objectType = "plant" },
       delay: 2
-      })
+    })
+
+    gsap.to('.phoneAnimImg', {
+      scrollTrigger: '.phoneAnimImg',
+      duration: 2, 
+      rotationY:-180, 
+      repeat:-1, 
+      yoyo:true, 
+      stagger: 0.1
+    })
   }
 }
 </script>
@@ -161,7 +173,7 @@ export default {
     font-family: sans-serif;
   }
   .space, .space1 {
-    height: 2000px;
+    height: 1000px;
   }
   .hero {
     position: relative;
