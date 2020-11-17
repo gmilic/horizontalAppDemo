@@ -13,7 +13,7 @@
         color="primary"
         class="my-12"
       >
-        Primary
+        Sign up
       </v-btn>
     </div>
   </div>
