@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-app>
+
   <div class="hero">
     <video playsinline autoplay muted loop poster='/assets/City-Traffic-1.jpg'>
       <source :src='require("@/assets/city-traffic-2.mp4")' type='video/mp4'>
@@ -42,7 +42,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-app>
+
   <div class="animWrapper">
     <div class="phoneContainer" >
       <img class="phone" src="../assets/telefon02.png" alt="phone" />
