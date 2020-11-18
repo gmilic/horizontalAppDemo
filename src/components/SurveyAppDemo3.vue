@@ -190,4 +190,7 @@ export default {
     left: 200px;
     color: #fff;
   }
+  .phoneAnimImg {
+    width: 30vw;
+  }
 </style>
