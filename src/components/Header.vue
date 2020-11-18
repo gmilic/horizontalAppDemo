@@ -3,7 +3,6 @@
       absolute
       color="rgba(18, 33, 32, 0.64)"
       elevate-on-scroll
-      scroll-target="#scrolling-techniques-7"
     >
       <v-img
         class="mx-2"
@@ -15,37 +14,33 @@
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items class="hidden-xs-only">
+      <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
-          to="/"
+          href="#"
           color="transparent"
           dark
-          flat
           elevation="0"
         >
         What we do
         </v-btn>
-                <v-btn
-          to="/"
+        <v-btn
+          href="#"
           color="transparent"
           dark
-          flat
           elevation="0"
         >
         How it works
         </v-btn>        <v-btn
-          to="/"
+          href="#"
           color="transparent"
           dark
-          flat
           elevation="0"
         >
         Pricing
         </v-btn>        <v-btn
-          to="/"
+          href="#"
           color="transparent"
           dark
-          flat
           elevation="0"
         >
         Resources
@@ -54,16 +49,16 @@
 
 
         <v-btn
-          class="mx-4"
-          to="/"
+          class="mx-4 hidden-sm-and-down"
+          href="#"
           outlined
           color="#fff"
         >
           Log in
         </v-btn>
         <v-btn
-          class="mx-4"
-          to="/"
+          class="mx-4 hidden-sm-and-down"
+          href="#"
           color="#4A81C1"
           dark
         >
@@ -71,13 +66,24 @@
         </v-btn>
 
 
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        class="hidden-md-and-up"
+        dark
+        @click="drawer = true"
+      >
+        
+      </v-app-bar-nav-icon>
     </v-app-bar>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data: function () {
+    return {
+      drawer: false
+    }
+  },
 
 }
 </script>

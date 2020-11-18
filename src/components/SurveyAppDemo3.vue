@@ -1,48 +1,5 @@
 <template>
 <div>
-
-  <div class="hero">
-    <video playsinline autoplay muted loop poster='/assets/City-Traffic-1.jpg'>
-      <source :src='require("@/assets/city-traffic-2.mp4")' type='video/mp4'>
-    </video>
-    <div class="heroText">
-      <h2 class="text-h2 font-weight-bold">Full Trucks</h2>
-      <h5 class="text-h5 font-weight-bold">ShyftX delivers smarter tools and expert support to run your moving company with confidence.</h5>
-      <v-btn
-        depressed
-        color="primary"
-        class="my-12"
-      >
-        Sign up
-      </v-btn>
-    </div>
-  </div>
-    <v-container class="grey lighten-5 mt-16">
-      <v-row>
-        <v-col
-          cols="12"
-          sm="4"
-          >
-          <h3>Lump sum shipments</h3> 
-          <p>We've teamed up with RMCs and Corporations to give transferees a business class journey.</p>
-        </v-col>
-              <v-col
-          cols="12"
-          sm="4"
-          >
-          <h3>Lump sum shipments</h3> 
-          <p>We've teamed up with RMCs and Corporations to give transferees a business class journey.</p>
-        </v-col>
-              <v-col
-          cols="12"
-          sm="4"
-          >
-          <h3>Lump sum shipments</h3> 
-          <p>We've teamed up with RMCs and Corporations to give transferees a business class journey.</p>
-        </v-col>
-      </v-row>
-    </v-container>
-
   <div class="animWrapper">
     <div class="phoneContainer" >
       <img class="phone" src="../assets/telefon02.png" alt="phone" />
@@ -50,9 +7,9 @@
       <div v-if="showObjectName" class="showChairWrapp">{{ objectType }}</div>
     </div>
   </div>
-  <div class="phoneAnimWrapper">
+  <!-- <div class="phoneAnimWrapper">
     <img class="phoneAnimImg" src="../assets/mobile-mockup-01.png" alt="">
-  </div>
+  </div> -->
   <div class="space">
 
   </div>
@@ -174,21 +131,6 @@ export default {
   }
   .space, .space1 {
     height: 1000px;
-  }
-  .hero {
-    position: relative;
-    width: 100vw;
-    max-width: 100%;
-    height: 56vw;
-  }
-  .hero video {
-    width: 100%;
-  }
-  .heroText {
-    position: absolute;
-    top: 200px;
-    left: 200px;
-    color: #fff;
   }
   .phoneAnimImg {
     width: 30vw;
