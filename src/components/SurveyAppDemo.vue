@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="sliding-bg">
       <div ref="draggableContainer" id="draggable-container" @mousedown="dragMouseDown">
-        <img name="header" src="../assets/telefon.png" alt="phone" />
+        <img name="phone" class="phone" src="../assets/ShyftX_hand.png" alt="phone" />
         <h4 v-if="showDragMe">Drag me!</h4>
         <div v-if="showChair" class="showChairWrapp">Chair</div>
       </div>
@@ -73,22 +73,27 @@ export default {
 <style scoped>
   .wrapper {
     overflow: hidden;
-    position: relative;
   }
   .sliding-bg {
-    background: url('../assets/bg.jpg') no-repeat left center;
+    position: relative;
+    background: url('../assets/ShyftX_room.jpg') no-repeat left center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 50vh;
     width: 100vw;
+    max-width:100%;
+    height: 30vw;
     animation: slide 60s linear infinite;
-
+  }
+  .phone {
+    width: 67vw;
+    vertical-align: bottom;
   }
   #draggable-container {
     position: absolute;
     bottom: 0;
+    width: 67vw;
   }
   h4 {
     color: #eee;

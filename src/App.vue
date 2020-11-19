@@ -4,18 +4,17 @@
       <Header></Header>
       <HeroVideo></HeroVideo>
       <ThreeCol></ThreeCol>
-      <SurveyAppDemo3></SurveyAppDemo3>
+      <SurveyAppDemo></SurveyAppDemo>
     </v-app>
+    <div class="tempSpace"></div>
   </div>
 </template>
 
 <script>
-// import SurveyAppDemo from './components/SurveyAppDemo.vue'
-// import SurveyAppDemo2 from './components/SurveyAppDemo2.vue'
 import Header from './components/Header.vue'
 import HeroVideo from './components/HeroVideo.vue'
 import ThreeCol from './components/ThreeCol.vue'
-import SurveyAppDemo3 from './components/SurveyAppDemo3.vue'
+import SurveyAppDemo from './components/SurveyAppDemo.vue'
 
 export default {
   name: 'App',
@@ -25,7 +24,7 @@ export default {
     Header,
     HeroVideo,
     ThreeCol,
-    SurveyAppDemo3,
+    SurveyAppDemo
   }
 }
 </script>
@@ -34,5 +33,8 @@ export default {
   * {
     padding: 0;
     margin: 0;
+  }
+  .tempSpace {
+    height: 1000px;
   }
 </style>
