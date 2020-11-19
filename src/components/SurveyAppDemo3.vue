@@ -78,14 +78,14 @@ export default {
       delay: 2
     })
 
-    gsap.to('.phoneAnimImg', {
-      scrollTrigger: '.phoneAnimImg',
-      duration: 2, 
-      rotationY:-180, 
-      repeat:-1, 
-      yoyo:true, 
-      stagger: 0.1
-    })
+    // gsap.to('.phoneAnimImg', {
+    //   scrollTrigger: '.phoneAnimImg',
+    //   duration: 2, 
+    //   rotationY:-180, 
+    //   repeat:-1, 
+    //   yoyo:true, 
+    //   stagger: 0.1
+    // })
   }
 }
 </script>
