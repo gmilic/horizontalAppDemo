@@ -7,7 +7,12 @@
         <div v-if="showChair" class="showChairWrapp">Chair</div>
       </div>
     </div>
-    {{ positions.clientX }}
+    {{ positionX }}
+    <br>
+    {{ movementX }}
+    <br>
+
+
   </div>
 </template>
 
@@ -16,14 +21,11 @@ export default {
   name: 'AppDemo',
   data: function () {
     return {
-      positions: {
-        clientX: undefined,
-        // clientY: undefined,
-        movementX: 0,
-        // movementY: 0
-      },
+      positionX: undefined,
+      movementX: 0,
       showDragMe: true,
-      showChair: false
+      showChair: false,
+
     }
   },
   methods: {
@@ -31,31 +33,42 @@ export default {
       event.preventDefault()
       this.showDragMe = false;
       // get the mouse cursor position at startup:
-      this.positions.clientX = event.clientX
-      // this.positions.clientY = event.clientY
+      this.positionX = event.clientX
+
       document.onmousemove = this.elementDrag
       document.onmouseup = this.closeDragElement
     },
     elementDrag: function (event) {
       event.preventDefault()
-      this.positions.movementX = this.positions.clientX - event.clientX
-      // this.positions.movementY = this.positions.clientY - event.clientY
-      this.positions.clientX = event.clientX
-      if (this.positions.clientX > 970 && this.positions.clientX < 1070 ) {
-        this.showChair = true
-      } else {
-        this.showChair = false
-      }
+      this.movementX = this.positionX - event.clientX
+      this.positionX = event.clientX
+      console.log(this.movementX)
+
+      // if (this.positions.clientX > 970 && this.positions.clientX < 1070 ) {
+      //   this.showChair = true
+      // } else {
+      //   this.showChair = false
+      // }
+      
       // this.positions.clientY = event.clientY
       // set the element's new position:
-      // this.$refs.draggableContainer.style.top = (this.$refs.draggableContainer.offsetTop - this.positions.movementY) + 'px'
-      this.$refs.draggableContainer.style.left = (this.$refs.draggableContainer.offsetLeft - this.positions.movementX) + 'px'
+      this.$refs.draggableContainer.style.left = (this.$refs.draggableContainer.offsetLeft - this.movementX) + 'px'
+
     },
     closeDragElement () {
       document.onmouseup = null;
       document.onmousemove = null;
       this.showDragMe = true;
       this.showChair = false;
+    },
+    convertPXToVW: function(px) {
+      if(px > 0) {
+        return px * (100 / document.documentElement.clientWidth);
+      } else if (px < 0) {
+        return -Math.abs(px * (100 / document.documentElement.clientWidth));
+      } else {
+        return 0
+      }
     }
   },
   computed: {
