@@ -183,7 +183,7 @@ export default {
   }
   .sofaData {
     position: absolute;
-    top: 10vw;
+    top: 11vw;
     left: 65vw;
   }
   .overlayData {
