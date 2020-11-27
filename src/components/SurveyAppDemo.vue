@@ -162,19 +162,11 @@ export default {
     left: 16%;
     font-family: sans-serif;
   }
-  .showChairWrapp {
-    color: #eee;
-    text-shadow: 2px 2px 6px #000;
-    font-size: 2em;
-    position: absolute;
-    top: 39%;
-    left: 16%;
-    font-family: sans-serif;
-  }
   .chairData {
     position: absolute;
     top: 12vw;
     left: 46vw;
+    
   }
   .tvData {
     position: absolute;
@@ -187,7 +179,7 @@ export default {
     left: 65vw;
   }
   .overlayData {
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .overlayDataTitle {
     width: 63px;
