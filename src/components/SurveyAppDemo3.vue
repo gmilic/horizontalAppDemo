@@ -1,42 +1,40 @@
 <template>
 <div>
-  <div class="animContainer">
-    <div class="animWrapper">
-      <div class="phoneContainer" >
-        <img class="phone" src="../assets/ShyftX_hand.png" alt="phone" />
-        <h4 v-if="showScrollMe">Please scroll</h4>
-      </div>
-      <transition name="fade">
-        <div v-show="showChair" class="chairData overlayData" >
-          <div class="overlayDataTitle">Chair</div>
-          <div class="overlayDataInfo">
-            <p>Total weight: 55.0</p>
-            <p>Dimensions: 32” x 40” x 30</p>
-            <p>Units: 1</p>
-          </div>
-        </div>
-      </transition>
-      <transition name="fade">
-        <div v-if="showTV" class="tvData overlayData">
-          <div class="overlayDataTitle">TV</div>
-          <div class="overlayDataInfo">
-            <p>Total weight: 55.0</p>
-            <p>Dimensions: 32” x 40” x 30</p>
-            <p>Units: 1</p>
-          </div>
-        </div>
-      </transition>
-      <transition name="fade">
-        <div v-if="showSofa" class="sofaData overlayData">
-          <div class="overlayDataTitle">Sofa</div>
-          <div class="overlayDataInfo">
-            <p>Total weight: 55.0</p>
-            <p>Dimensions: 32” x 40” x 30</p>
-            <p>Units: 1</p>
-          </div>
-        </div>
-      </transition>
+  <div class="animWrapper">
+    <div class="phoneContainer" >
+      <img class="phone" src="../assets/ShyftX_hand.png" alt="phone" />
+      <h4 v-if="visibleScrollMe">Please scroll</h4>
     </div>
+    <transition name="fade">
+      <div v-if="visibleChair" class="chairData overlayData" >
+        <div class="overlayDataTitle">Chair</div>
+        <div class="overlayDataInfo">
+          <p>Total weight: 55.0</p>
+          <p>Dimensions: 32” x 40” x 30</p>
+          <p>Units: 1</p>
+        </div>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div v-if="visibleTv" class="tvData overlayData">
+        <div class="overlayDataTitle">TV</div>
+        <div class="overlayDataInfo">
+          <p>Total weight: 55.0</p>
+          <p>Dimensions: 32” x 40” x 30</p>
+          <p>Units: 1</p>
+        </div>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div v-if="visibleSofa" class="sofaData overlayData">
+        <div class="overlayDataTitle">Sofa</div>
+        <div class="overlayDataInfo">
+          <p>Total weight: 55.0</p>
+          <p>Dimensions: 32” x 40” x 30</p>
+          <p>Units: 1</p>
+        </div>
+      </div>
+    </transition>
   </div>
   
   <!-- <div class="phoneAnimWrapper">
@@ -57,68 +55,69 @@ export default {
   name: 'SurveyAppDemo3',
   data: function () {
     return {
-      showScrollMe: true,
-      showChair: false,
-      showTV: false,
-      showSofa: false,
+      visibleScrollMe: true,
+      visibleChair: false,
+      visibleTv: false,
+      visibleSofa: false,
     }
   },
   methods: {
+    toggleChair() {
+      this.visibleChair = !this.visibleChair 
+      console.log('toggle Chair')
+    },
+    toggleSofa() {
+      this.visibleSofa = !this.visibleSofa 
+    },
+    toggleTv() {
+      this.visibleTv = !this.visibleTv 
+    },
+    toggleScrollMe() {
+      this.visibleScrollMe = !this.visibleScrollMe
+    },
 
   },
   computed: {
 
   },
-  mounted: function() {
+  mounted() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    let t1 = gsap.timeline({
+    let tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".animWrapper",
-        scrub: 1,
-        pin: ".animContainer",
-        // markers: true,
+        scrub: true,
+        pin: ".animWrapper",
         start: "top top",
+        // end: "bottom bottom",
+        markers: true,
       }
     })
 
-    t1.to('.phoneContainer', {
+    tl.to('.phoneContainer', {
       x: "33vw", 
-      // y: "5vw",
-      duration: 4,
-      onStart: () => { this.showScrollMe = false },
-      onComplete: () => { this.showChair = true },
-      onReverseComplete: () => { this.showScrollMe = true },
-      delay: 2
+      callbackScope: this,
+      delay: 1,
+      onStart: () => { this.toggleScrollMe() },
+      onComplete: () => { this.toggleChair() },
+      // onReverseComplete: () => { this.showScrollMe = true }
       })
       .to('.phoneContainer', {
       x: "56vw", 
-      // y: "-5vw",
-      duration: 4,
-      onStart: () => { this.showChair = false },
-      onComplete: () => { this.showSofa = true },
-      onReverseComplete: () => { this.showChair = true },
-      delay: 2
+      delay: 1,
+      onStart: () => { this.toggleChair() },
+      onComplete: () => { this.toggleSofa() },
+      // onReverseComplete: () => { this.showChair = true }
       })
       .to('.phoneContainer', {
-      x: "4vw", 
-      // y: "-14vw",
-      duration: 6,
-      onStart: () => { this.showSofa = false },
-      onComplete: () => { this.showTv = true },
-      onReverseComplete: () => { this.showSofa = true },
-      delay: 2
+      x: "3vw", 
+      delay: 1,
+      onStart: () => { this.toggleSofa() },
+      onComplete: () => { this.toggleTv() },
+      // onReverseComplete: () => { this.showSofa = true }
     })
 
-    // gsap.to('.phoneAnimImg', {
-    //   scrollTrigger: '.phoneAnimImg',
-    //   duration: 2, 
-    //   rotationY:-180, 
-    //   repeat:-1, 
-    //   yoyo:true, 
-    //   stagger: 0.1
-    // })
   }
 }
 </script>
@@ -139,7 +138,7 @@ export default {
   .phoneContainer {
     position: absolute;
     bottom: 0;
-    left: 12vw;
+    left: 3vw;
   }
    .phone {
     width: 67vw;
@@ -165,7 +164,7 @@ export default {
     font-family: sans-serif;
   }
   .space, .space1 {
-    height: 1000px;
+    height: 1500px;
   }
   .phoneAnimImg {
     width: 30vw;
