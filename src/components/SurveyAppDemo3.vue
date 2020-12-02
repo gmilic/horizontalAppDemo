@@ -87,7 +87,8 @@ export default {
         opacity: 1
       },
       {
-        opacity: 0
+        opacity: 0,
+        ease: "power4.in"
       })
       .to('.phoneContainer', {
         x: "33vw", 
@@ -97,12 +98,14 @@ export default {
       },
       {
         opacity: 1,
+        ease: "power4.out"
       })
       .fromTo('.chairData', {
         opacity: 1
       },
       {
         opacity: 0,
+        ease: "power4.in"
       })
       .to('.phoneContainer', {
         x: "56vw", 
@@ -112,12 +115,14 @@ export default {
       },
       {
         opacity: 1,
+        ease: "power4.out"
       })
       .fromTo('.sofaData', {
         opacity: 1
       },
       {
         opacity: 0,
+        ease: "power4.in"
       })
       .to('.phoneContainer', {
         x: "3vw", 
@@ -127,6 +132,7 @@ export default {
       },
       {
         opacity: 1,
+        ease: "power4.out"
       })
   }
 }
