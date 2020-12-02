@@ -1,12 +1,12 @@
 <template>
 <div>
   <div class="animWrapper">
-    <div class="phoneContainer" >
+    <div class="phoneContainer" ref="phoneContainerStyles">
       <img class="phone" src="../assets/ShyftX_hand.png" alt="phone" />
-      <h4 v-if="visibleScrollMe">Please scroll</h4>
+      <h4 class="pleaseScroll" >Please scroll</h4>
     </div>
     <transition name="fade">
-      <div v-if="visibleChair" class="chairData overlayData" >
+      <div class="chairData overlayData" >
         <div class="overlayDataTitle">Chair</div>
         <div class="overlayDataInfo">
           <p>Total weight: 55.0</p>
@@ -16,7 +16,7 @@
       </div>
     </transition>
     <transition name="fade">
-      <div v-if="visibleTv" class="tvData overlayData">
+      <div class="tvData overlayData">
         <div class="overlayDataTitle">TV</div>
         <div class="overlayDataInfo">
           <p>Total weight: 55.0</p>
@@ -26,7 +26,7 @@
       </div>
     </transition>
     <transition name="fade">
-      <div v-if="visibleSofa" class="sofaData overlayData">
+      <div class="sofaData overlayData">
         <div class="overlayDataTitle">Sofa</div>
         <div class="overlayDataInfo">
           <p>Total weight: 55.0</p>
@@ -36,10 +36,7 @@
       </div>
     </transition>
   </div>
-  
-  <!-- <div class="phoneAnimWrapper">
-    <img class="phoneAnimImg" src="../assets/mobile-mockup-01.png" alt="">
-  </div> -->
+
   <div class="space">
 
   </div>
@@ -55,26 +52,9 @@ export default {
   name: 'SurveyAppDemo3',
   data: function () {
     return {
-      visibleScrollMe: true,
-      visibleChair: false,
-      visibleTv: false,
-      visibleSofa: false,
     }
   },
   methods: {
-    toggleChair() {
-      this.visibleChair = !this.visibleChair 
-      console.log('toggle Chair')
-    },
-    toggleSofa() {
-      this.visibleSofa = !this.visibleSofa 
-    },
-    toggleTv() {
-      this.visibleTv = !this.visibleTv 
-    },
-    toggleScrollMe() {
-      this.visibleScrollMe = !this.visibleScrollMe
-    },
 
   },
   computed: {
@@ -91,33 +71,63 @@ export default {
         pin: ".animWrapper",
         start: "top top",
         // end: "bottom bottom",
+        // toggleActions: "restart reverse restart reverse",
+        // snap: {
+        //   snapTo: "labels", // snap to the closest label in the timeline
+        //   duration: {min: 0.2, max: 3}, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+        //   delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+        //   ease: "power1.inOut" // the ease of the snap animation ("power3" by default)
+        // },
         markers: true,
       }
     })
 
-    tl.to('.phoneContainer', {
-      x: "33vw", 
-      callbackScope: this,
-      delay: 1,
-      onStart: () => { this.toggleScrollMe() },
-      onComplete: () => { this.toggleChair() },
-      // onReverseComplete: () => { this.showScrollMe = true }
+    tl
+      .fromTo('.pleaseScroll', {
+        opacity: 1
+      },
+      {
+        opacity: 0
       })
       .to('.phoneContainer', {
-      x: "56vw", 
-      delay: 1,
-      onStart: () => { this.toggleChair() },
-      onComplete: () => { this.toggleSofa() },
-      // onReverseComplete: () => { this.showChair = true }
+        x: "33vw", 
+      })
+      .fromTo('.chairData', {
+        opacity: 0
+      },
+      {
+        opacity: 1,
+      })
+      .fromTo('.chairData', {
+        opacity: 1
+      },
+      {
+        opacity: 0,
       })
       .to('.phoneContainer', {
-      x: "3vw", 
-      delay: 1,
-      onStart: () => { this.toggleSofa() },
-      onComplete: () => { this.toggleTv() },
-      // onReverseComplete: () => { this.showSofa = true }
-    })
-
+        x: "56vw", 
+      })
+      .fromTo('.sofaData', {
+        opacity: 0
+      },
+      {
+        opacity: 1,
+      })
+      .fromTo('.sofaData', {
+        opacity: 1
+      },
+      {
+        opacity: 0,
+      })
+      .to('.phoneContainer', {
+        x: "3vw", 
+      })
+      .fromTo('.tvData', {
+        opacity: 0
+      },
+      {
+        opacity: 1,
+      })
   }
 }
 </script>
@@ -138,7 +148,8 @@ export default {
   .phoneContainer {
     position: absolute;
     bottom: 0;
-    left: 3vw;
+    z-index: 9;
+    /* left: 3vw; */
   }
    .phone {
     width: 67vw;
@@ -172,7 +183,7 @@ export default {
     .chairData {
     position: absolute;
     top: 12vw;
-    left: 46vw;
+    left: 42vw;
   }
   .tvData {
     position: absolute;
@@ -186,6 +197,7 @@ export default {
   }
   .overlayData {
     transition: all 0.5s ease-in-out;
+    opacity: 0
   }
   .overlayDataTitle {
     width: 63px;
