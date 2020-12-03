@@ -6,7 +6,7 @@
         <h4 v-if="showDragMe">Drag me!</h4>
       </div>
       <transition name="fade">
-        <div v-show="showChair" class="chairData overlayData" >
+        <div v-if="showChair" class="chairData overlayData" >
           <div class="overlayDataTitle">Chair</div>
           <div class="overlayDataInfo">
             <p>Total weight: 55.0</p>
